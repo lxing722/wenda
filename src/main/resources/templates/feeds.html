@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)#signin -->
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" dropeffect="none" class="js is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile" style="">
+<head th:replace="header :: head"></head>
+<body class="zhi ">
+<div th:replace="header :: navigation" role="navigation" class="zu-top"></div>
+
+<link rel="stylesheet" href="../styles/index.css">
+<link rel="stylesheet" href="../styles/detail.css">
+    <div class="zg-wrap zu-main clearfix " role="main">
+        <div class="zu-main-content">
+            <div class="zu-main-content-inner">
+                <div class="zg-section" id="zh-home-list-title">
+                    <i class="zg-icon zg-icon-feedlist"></i>最新动态
+                    <input type="hidden" id="is-topstory">
+                    <span class="zg-right zm-noti-cleaner-setting" style="list-style:none">
+                        <a href="https://nowcoder.com/settings/filter" class="zg-link-gray-normal">
+                            <i class="zg-icon zg-icon-settings"></i>设置</a></span>
+                </div>
+                <div class="zu-main-feed-con navigable" data-feedtype="topstory" id="zh-question-list" data-widget="navigable" data-navigable-options="{&quot;items&quot;:&quot;&gt; .zh-general-list .feed-content&quot;,&quot;offsetTop&quot;:-82}">
+                    <a href="javascript:;" class="zu-main-feed-fresh-button" id="zh-main-feed-fresh-button" style="display:none"></a>
+                    <div th:each="vo:${feeds}" id="js-home-feed-list" class="zh-general-list topstory clearfix" data-init="{&quot;params&quot;: {}, &quot;nodename&quot;: &quot;TopStory2FeedList&quot;}" data-delayed="true" data-za-module="TopStoryFeedList">
+                        <div th:replace="header :: follow_question(${vo})"></div>
+                    </div>
+                    <a href="javascript:;" id="zh-load-more" data-method="next" class="zg-btn-white zg-r3px zu-button-more" style="">更多</a></div>
+            </div>
+        </div>
+    </div>
+<div th:replace="js :: scripts"></div>
+<script type="text/javascript" src="/scripts/main/site/detail.js"></script>
+</body>

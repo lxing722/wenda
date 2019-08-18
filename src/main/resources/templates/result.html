@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)#signin -->
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" dropeffect="none" class="js is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile" style="">
+<head th:replace="header :: head"></head>
+<body class="zhi page-search">
+<div th:replace="header :: navigation" role="navigation" class="zu-top"></div>
+
+<link rel="stylesheet" href="../styles/result.css">
+<link rel="stylesheet" href="../styles/detail.css">
+<div class="zg-wrap zu-main clearfix" role="main">
+    <div class="zu-main-content">
+        <div class="zu-main-content-inner">
+            <ul th:each="vo:${vos}" class="list contents navigable">
+                <li class="item clearfix">
+                    <div class="title">
+                        <a target="_blank" th:href="'/user/' + ${vo.get('user').id}" class="js-title-link" th:utext="${vo.get('question').title}">${vo.get('question').title}</a>
+                    </div>
+                    <div class="content">
+
+                        <ul class="answers">
+                            <li class="answer-item clearfix">
+                                <div class="entry answer">
+                                    <div class="entry-left hidden-phone">
+                                        <a class="zm-item-vote-count hidden-expanded js-expand js-vote-count" data-bind-votecount="" th:text="${vo.get('followCount')}">${vo.followCount}</a>
+                                    </div>
+                                    <div class="entry-body">
+                                        <div class="entry-meta">
+                                            <strong class="author-line"><a class="author" th:href="'/user/' + ${vo.get('user').id}" th:text="${vo.get('user').name}">$!{vo.user.name}</a>，<span th:text="${#dates.format(vo.get('question').createdDate, 'yyyy-MM-dd')}">$data.format('yyyy-MM-dd HH:mm:ss', $!{vo.question.createdDate})</span></strong>
+                                        </div>
+                                        <div class="entry-content js-collapse-body">
+                                            <div class="summary hidden-expanded" style="" th:utext="${vo.get('question').content}">
+                                            $!{vo.question.content}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div th:replace="js :: scripts"></div>
+</body></html>

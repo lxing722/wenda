@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN" class="is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile">
+<head th:replace="header :: head"></head>
+<body class="zhi ">
+<div th:replace="header :: navigation" role="navigation" class="zu-top"></div>
+
+    <link rel="stylesheet" href="../styles/letter.css">
+    <div id="main">
+        <div class="zg-wrap zu-main clearfix ">
+            <ul th:each="conversation:${conversations}" class="letter-list">
+                <li id="conversation-item-10005_622873">
+                    <a class="letter-link" href="msg-list?conversationId=10005_622873&amp;updateRead=1&amp;msgType=1"></a>
+                    <div class="letter-info">
+                        <span class="l-time" th:text="${#dates.format(conversation.get('conversation').createdDate, 'yyyy-MM-dd HH:mm:ss')}">今天 15:28</span>
+                        <div class="l-operate-bar">
+                            <!--<a href="javascript:void(0);" class="sns-action-del" data-id="10005_622873">-->
+                            <!--删除-->
+                            <!--</a>-->
+                            <a th:href="@{'/msg/detail?conversationId=' + ${conversation.get('conversation').getConversationId()}}" th:text="'共' + ${conversation.get('count')} + '条会话'">
+                                共268条会话
+                            </a>
+                        </div>
+                    </div>
+                    <div class="chat-headbox">
+                        <span class="msg-num" th:text="${conversation.get('unread')}">
+                            99+
+                        </span>
+                        <a class="list-head">
+                            <img alt="头像" th:src="${conversation.get('user').getHeadUrl()}">
+                        </a>
+                    </div>
+                    <div class="letter-detail">
+                        <a th:title="${conversation.get('user').getName()}" class="letter-name level-color-1">
+                            通知
+                        </a>
+                        <p class="letter-brief">
+                            <a th:href="@{'/msg/detail?conversationId=' + ${conversation.get('conversation').getConversationId()}}" th:text="${conversation.get('conversation').getContent()}">
+                                你收藏的问题"二维数组中的查找" 有了新的回答，去看看对自己是否有用吧。（不想再收到此类提醒？点击设置 ）
+                            </a>
+                        </p>
+                    </div>
+                </li>
+
+                </ul>
+
+        </div>
+    </div>
+<div th:replace="js :: scripts"></div>
+<script type="text/javascript" src="/scripts/main/site/detail.js"></script>
+</body></html>

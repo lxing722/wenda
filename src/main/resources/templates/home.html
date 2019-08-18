@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Hello World</title>
+</head>
+<body>
+<p th:text="'Hello！, ' + ${value1} + '!'" >3333</p>
+<p th:text="'colors: ' + ${colors}"></p>
+<tr th:each="color:${colors}">
+    <td th:text="'This is ' + ${color}"></td><br>
+</tr>
+<tr th:each="num:${map}">
+    <td th:text="${num.getKey()} + ':' + ${num.getValue()}"></td><br>
+</tr>
+</body>
